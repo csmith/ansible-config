@@ -1,0 +1,11 @@
+---
+# Adds the fish-shell release PPA and installs fish.
+
+- name: install python-pycurl (needed to add fish PPA)
+  apt: pkg=python-pycurl
+
+- name: add fish PPA
+  apt_repository: repo='ppa:fish-shell/release-2' update_cache=yes
+
+- name: install fish
+  apt: pkg=fish
