@@ -1,0 +1,11 @@
+---
+# Ensures that an appropriate 'Shane' user is created
+
+- hosts: dmdirc
+  user: root
+  tasks:
+
+  - name: create shane user
+    user: name=shane
+
+  - include: includes/ssh-keys user=shane key_dir=shane
