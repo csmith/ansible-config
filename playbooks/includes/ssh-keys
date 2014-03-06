@@ -1,13 +1,13 @@
 ---
 # Maintains a set of SSH keys
 
-- name: add authorized keys
+- name: add {{ key_dir }}'s authorized keys for {{ user }}
   authorized_key: user={{ user }}
                   key="{{ lookup('file', item) }}"
   with_fileglob:
-    - /etc/ansible/data/keys/{{ key_dir }}/{{ type | default(active) }}/*
+    - /etc/ansible/data/keys/{{ key_dir }}/{{ type | default('active') }}/*
 
-- name: revoke old authorized keys
+- name: revoke {{ key_dir }}'s old authorized keys for {{ user }}
   authorized_key: user={{ user }}
                   key="{{ lookup('file', item) }}"
                   state=absent
