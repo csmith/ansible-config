@@ -1,0 +1,52 @@
+---
+# Sets up accounts for DMDirc build agents
+
+- hosts: dmdirc-buildagents
+  user: root
+
+  vars:
+    home_dir: /home/{{ teamcity_user }}/
+    agent_sh: "{{ home_dir }}/bin/agent.sh"
+    conf: "{{ home_dir }}/conf/buildAgent.properties"
+
+  tasks:
+
+  - name: create teamcity user
+    user: name={{ teamcity_user }} generate_ssh_key=yes
+
+  - name: install pre-requisites
+    apt: pkg={{ item }}
+    with_items:
+      - ant
+      - git
+      - unzip
+      - openjdk-7-jdk
+
+  - name: fetch agent zip
+    sudo_user: "{{ teamcity_user }}"
+    get_url: url=http://teamcity.dmdirc.com/update/buildAgent.zip dest={{ home_dir }}
+
+  - name: unpack agent zip
+    sudo_user: "{{ teamcity_user }}"
+    command: creates={{ agent_sh }} chdir={{ home_dir }} unzip -o buildAgent.zip
+
+  - name: make agent.sh executable
+    sudo_user: "{{ teamcity_user }}"
+    file: path={{ agent_sh }} mode=0755
+
+  - name: copy default configuration
+    sudo_user: "{{ teamcity_user }}"
+    command: creates={{ conf }} chdir={{ home_dir }}/conf cp buildAgent.dist.properties buildAgent.properties
+
+  - name: set teamcity server URL
+    sudo_user: "{{ teamcity_user }}"
+    lineinfile: dest={{ conf }} regexp=^serverUrl= line=serverUrl=http://teamcity.dmdirc.com/
+
+  - name: set build agent name
+    sudo_user: "{{ teamcity_user }}"
+    lineinfile: dest={{ conf }} regexp=^name= line=name={{ inventory_hostname }}
+
+  - name: add dmdirc.com to known hosts
+    sudo_user: "{{ teamcity_user }}"
+    lineinfile: dest={{ home_dir }}/.ssh/known_hosts regexp=^dmdirc.com
+                  line="dmdirc.com,85.234.138.10 {{ hostvars['renji.org.uk']['ssh_public_key'] }}"
