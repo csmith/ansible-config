@@ -2,12 +2,14 @@
 # Sets up accounts for DMDirc build agents
 
 - hosts: dmdirc-buildagents
+  sudo: yes
   user: root
 
   vars:
     home_dir: /home/{{ teamcity_user }}/
     agent_sh: "{{ home_dir }}/bin/agent.sh"
     conf: "{{ home_dir }}/conf/buildAgent.properties"
+    pid: "{{ home_dir }}/logs/buildAgent.pid"
     temp_key: /etc/ansible/data/auto/keys/teamcity-{{ ansible_hostname }}
     htaccess: /home/dmdirc/www/private/.htaccess
     header: "# {{ inventory_hostname }}"
@@ -72,3 +74,6 @@
     sudo_user: dmdirc
     lineinfile: dest={{ htaccess }} line="Allow from {{ item }}" insertafter="{{ header }}"
     with_items: ansible_all_ipv4_addresses
+
+  - include: includes/launch-app pid_file="{{ pid }}" start_command="{{ agent_sh }} start"
+    sudo_user: "{{ teamcity_user }}"
