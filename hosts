@@ -31,3 +31,7 @@ chris-owned
 [chris-root:children]
 dmdirc
 chris-owned
+
+[ansible-staging]
+do1.chameth.com
+quark.tenten.chameth.com
