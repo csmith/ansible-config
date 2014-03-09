@@ -1,0 +1,16 @@
+---
+# Adds a PPA and installs a package
+
+- name: install python-pycurl (needed to add {{ package }} PPA)
+  apt: pkg=python-pycurl
+
+- name: add PPA for {{ package }} (Debian)
+  apt_repository: repo="{{ ppa }}" update_cache=yes
+  when: ansible_os_family == 'Debian'
+
+- name: add PPA for {{ package }} (Mint)
+  apt_repository: repo="{{ ppa_mint }}" update_cache=yes
+  when: ansible_os_family == 'Linuxmint'
+
+- name: install {{ package }}
+  apt: pkg={{ package }} force=yes
