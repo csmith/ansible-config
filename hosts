@@ -18,6 +18,7 @@ grok.dmdirc.com
 [chris-owned]
 grok.dmdirc.com
 do1.chameth.com
+quark.tenten.chameth.com ansible_ssh_port=1010 ansible_ssh_host=5.44.248.137
 
 [digitalocean]
 grok.dmdirc.com
