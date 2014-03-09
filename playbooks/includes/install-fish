@@ -4,8 +4,13 @@
 - name: install python-pycurl (needed to add fish PPA)
   apt: pkg=python-pycurl
 
-- name: add fish PPA
+- name: add fish PPA (Debian)
   apt_repository: repo='ppa:fish-shell/release-2' update_cache=yes
+  when: ansible_os_family == 'Debian'
+
+- name: add fish PPA (Mint)
+  apt_repository: repo='deb http://ppa.launchpad.net/fish-shell/release-2/ubuntu raring main' update_cache=yes
+  when: ansible_os_family == 'Linuxmint'
 
 - name: install fish
   apt: pkg=fish
