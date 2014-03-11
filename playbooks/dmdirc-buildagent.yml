@@ -26,6 +26,9 @@
       - git
       - unzip
       - openjdk-7-jdk
+      - default-jdk
+      - nsis
+      - dpkg-dev
 
   - name: fetch agent zip
     sudo_user: "{{ teamcity_user }}"
