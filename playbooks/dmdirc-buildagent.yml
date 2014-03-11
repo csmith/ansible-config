@@ -26,9 +26,14 @@
       - git
       - unzip
       - openjdk-7-jdk
-      - default-jdk
       - nsis
       - dpkg-dev
+      - cdbs
+      - debhelper
+      - javahelper
+      - mkisofs
+      - alien
+      - fakeroot
 
   - name: fetch agent zip
     sudo_user: "{{ teamcity_user }}"
