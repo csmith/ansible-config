@@ -1,0 +1,27 @@
+---
+# Adds the WebUpd8 PPA and installs Java8.
+
+- name: 'Install debconf-utils'
+  apt: pkg=debconf-utils
+
+- name: 'Check for oracle license agreement'
+  shell: '/usr/bin/debconf-get-selections | grep oracle-java8-installer'
+  register: selections
+  ignore_errors: yes
+  changed_when: False
+
+- name: 'Accept oracle license agreeement'
+  shell: 'echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections'
+  when: selections|failed
+
+- include: install-from-ppa
+  vars:
+    ppa: 'ppa:webupd8team/java'
+    ppa_mint: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu saucy main'
+    package: 'oracle-java8-installer'
+
+- include: install-from-ppa
+  vars:
+    ppa: 'ppa:webupd8team/java'
+    ppa_mint: 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu saucy main'
+    package: 'oracle-java8-set-default'

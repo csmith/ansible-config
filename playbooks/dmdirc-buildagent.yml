@@ -25,7 +25,6 @@
       - ant
       - git
       - unzip
-      - openjdk-7-jdk
       - nsis
       - dpkg-dev
       - cdbs
@@ -34,6 +33,8 @@
       - mkisofs
       - alien
       - fakeroot
+
+  - include: includes/install-java8
 
   - name: fetch agent zip
     sudo_user: "{{ teamcity_user }}"
