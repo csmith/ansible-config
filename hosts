@@ -20,11 +20,13 @@ niobe.dmdirc.com
 [chris-owned]
 grok.dmdirc.com
 do1.chameth.com
+do2.chameth.com ansible_ssh_host=178.62.0.84
 quark.tenten.chameth.com
 
 [digitalocean]
 grok.dmdirc.com
 do1.chameth.com
+do2.chameth.com
 
 [chris-access:children]
 dmdirc

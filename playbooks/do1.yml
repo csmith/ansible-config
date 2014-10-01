@@ -1,0 +1,7 @@
+---
+- hosts: do1.chameth.com
+  user: root
+  roles:
+   - { role: sshd, ssh_root_key_glob: '/etc/ansible/data/keys/chris/root/*', ssh_revoked_root_key_glob: '/etc/ansible/data/keys/chris/revoked/*' }
+   - common
+   - java8

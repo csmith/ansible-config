@@ -1,0 +1,16 @@
+---
+- hosts: do2.chameth.com
+  user: root
+  vars:
+   - teamcity_server_url: 'http://teamcity.dmdirc.com/'
+  roles:
+   - { role: sshd, ssh_root_key_glob: '/etc/ansible/data/keys/chris/root/*', ssh_revoked_root_key_glob: '/etc/ansible/data/keys/chris/revoked/*' }
+   - common
+   - nginx
+   - java8
+   - tapchat
+   - teamcity-agent
+   - dfbnc
+   - mysql
+   - python-dev
+   - uwsgi

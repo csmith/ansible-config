@@ -1,0 +1,11 @@
+---
+# Adds a node JS release PPA and installs node.
+
+- include: install-from-ppa
+  vars:
+    ppa: 'ppa:chris-lea/node.js'
+    ppa_mint: 'deb http://ppa.launchpad.net/chris-lea/node.js/ubuntu raring main'
+    package: 'nodejs'
+
+- name: install npm
+  apt: pkg=npm force=yes

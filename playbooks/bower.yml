@@ -1,0 +1,11 @@
+---
+# Installs bower (http://bower.io/)
+
+- hosts: all
+  user: root
+  tasks:
+
+    - include: includes/install-nodejs
+
+    - name: install bower
+      npm: global=yes name=bower
