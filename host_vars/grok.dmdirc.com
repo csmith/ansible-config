@@ -1,2 +1,0 @@
----
-teamcity_user: teamcity
