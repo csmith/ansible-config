@@ -1,8 +1,0 @@
----
-# Adds the fish-shell release PPA and installs fish.
-
-- include: install-from-ppa
-  vars:
-    ppa: 'ppa:fish-shell/release-2'
-    ppa_mint: 'deb http://ppa.launchpad.net/fish-shell/release-2/ubuntu raring main'
-    package: 'fish'
