@@ -2,3 +2,4 @@
 - include: common.yml
 - include: backups.yml
 - include: irc.yml
+- include: redirects.yml

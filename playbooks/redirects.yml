@@ -1,0 +1,14 @@
+---
+- hosts: redirects
+  roles:
+    - role: nginx-redirects
+      hosts:
+        chris.smith.name:
+          fallback: https://www.chameth.com/
+        md87.co.uk:
+          fallback: https://www.chameth.com/
+        apps.md87.co.uk:
+          fallback: https://www.chameth.com/
+        www.md87.co.uk:
+          fallback: https://www.chameth.com/
+
