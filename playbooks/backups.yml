@@ -2,4 +2,6 @@
 - hosts: backups
   roles:
     - role: attic
-      attic_ssh_keys: ["{{ lookup('file', '../data/keys/attic/quark') }}"]
+      attic_ssh_keys:
+        - "{{ lookup('file', '../data/keys/attic/quark') }}"
+        - "{{ lookup('file', '../data/keys/attic/do1') }}"
