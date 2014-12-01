@@ -1,3 +1,3 @@
-[submodule "roles"]
-	path = roles
-	url = git@github.com:csmith/ansible-roles.git
+[submodule "common-roles"]
+	path = common-roles
+	url = https://github.com/DMDirc/ansible-roles.git
