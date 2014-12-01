@@ -1,0 +1,4 @@
+---
+
+juliet_user: juliet
+juliet_dir: /home/{{ juliet_user }}/src

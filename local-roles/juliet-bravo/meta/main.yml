@@ -1,0 +1,6 @@
+---
+
+dependencies:
+  - java8
+  - role: user
+    user_name: "{{ juliet_user }}"

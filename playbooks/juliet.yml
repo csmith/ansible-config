@@ -1,0 +1,4 @@
+---
+- hosts: juliet
+  roles:
+    - role: juliet-bravo

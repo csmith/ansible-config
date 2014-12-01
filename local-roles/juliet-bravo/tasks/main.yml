@@ -1,0 +1,28 @@
+---
+
+- name: install git
+  apt: pkg=git
+  tags: [juliet]
+
+- name: clone git repository
+  git: accept_hostkey=yes
+       dest={{ juliet_dir }}
+       repo=git@github.com:csmith/JulietBravo.git
+  tags: [juliet]
+
+- name: chown checked out files
+  file: owner={{ juliet_user }}
+        path={{ juliet_dir }}
+        recurse=true
+  tags: [juliet]
+
+- name: build JB
+  sudo: true
+  sudo_user: "{{ juliet_user }}"
+  environment:
+    LANG: en_US.UTF-8
+    LC_CTYPE: en_US.UTF-8
+  command: chdir={{ juliet_dir }}
+           creates={{ juliet_dir }}/build/libs/JulietBravo-1.0.jar
+           ./gradlew jar
+  tags: [juliet]
