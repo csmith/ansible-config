@@ -11,4 +11,6 @@
           fallback: https://www.chameth.com/
         www.md87.co.uk:
           fallback: https://www.chameth.com/
+        poker.md87.co.uk:
+          fallback: https://www.chameth.com/JaPoker/
 
