@@ -29,3 +29,11 @@
 - name: install python dependencies
   pip: requirements={{ ds_dir }}/requirements.txt
   tags: [ds-tools]
+
+- name: create config file
+  template:
+    src: config.yml
+    dest: "{{ ds_dir }}/config.yml"
+    owner: "{{ ds_user }}"
+  tags: [ds-tools]
+

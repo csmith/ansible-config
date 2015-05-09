@@ -1,0 +1,5 @@
+---
+ user: {{ds_config_user}}
+ password: {{ds_config_pass}}
+ force: {{ds_config_force}}
+
