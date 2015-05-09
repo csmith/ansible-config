@@ -1,4 +1,7 @@
 ---
 - hosts: ds-tools
+  vars_files:
+    - ../vars/ds-tools.yml
   roles:
     - role: ds-tools
+

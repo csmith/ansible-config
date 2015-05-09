@@ -9,4 +9,6 @@ Most of the interesting stuff is found in the roles contained in the
 
 To run all of the playbooks:
 
-    ansible-playbook -i inventories/inventory.yml -u root playbooks/all.yml
+    ansible-playbook -i inventories/inventory.yml -u root \
+                     --vault-password-file=.vault-password playbooks/all.yml
+
