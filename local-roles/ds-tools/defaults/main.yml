@@ -1,0 +1,4 @@
+---
+
+ds_user: ds-tools
+ds_dir: /home/{{ ds_user }}/src

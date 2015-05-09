@@ -1,0 +1,6 @@
+---
+
+dependencies:
+  - role: user
+    user_name: "{{ ds_user }}"
+  - role: python-dev

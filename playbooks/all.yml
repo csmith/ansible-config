@@ -3,3 +3,5 @@
 - include: backups.yml
 - include: irc.yml
 - include: redirects.yml
+- include: ds-tools.yml
+- include: juliet.yml

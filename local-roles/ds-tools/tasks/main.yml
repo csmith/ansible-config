@@ -1,0 +1,30 @@
+---
+
+- name: install git
+  apt: pkg=git
+  tags: [ds-tools]
+
+- name: install dependencies
+  apt: pkg={{item}}
+  with_items:
+    - libxml2-dev
+    - libxslt1-dev
+    - zlib1g-dev
+    - xvfb
+  tags: [ds-tools]
+
+- name: clone git repository
+  git: accept_hostkey=yes
+       dest={{ ds_dir }}
+       repo=git@github.com:csmith/duty-sheet-reports.git
+  tags: [ds-tools]
+
+- name: chown checked out files
+  file: owner={{ ds_user }}
+        path={{ ds_dir }}
+        recurse=true
+  tags: [ds-tools]
+
+- name: install python dependencies
+  pip: requirements={{ ds_dir }}/requirements.txt
+  tags: [ds-tools]
