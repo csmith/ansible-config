@@ -21,6 +21,7 @@
 
 - name: chown checked out files
   file: owner={{ ds_user }}
+        group={{ ds_user }}
         path={{ ds_dir }}
         recurse=true
   tags: [ds-tools]
