@@ -37,3 +37,11 @@
     owner: "{{ ds_user }}"
   tags: [ds-tools]
 
+- name: add crontab
+  cron: name="send dutysheet"
+        user={{ ds_user }}
+        minute=0
+        hour=16
+        weekday=2
+        job="(cd {{ ds_dir }} && ./send-dutysheets.py)"
+
