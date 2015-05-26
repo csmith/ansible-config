@@ -3,3 +3,16 @@
  password: {{ds_config_pass}}
  force: {{ds_config_force}}
 
+ dutysheet_recipients:
+{% for recipient in ds_config_recipients %}
+   - {{recipient}}
+{% endfor %}
+
+ team_report_recipients:
+{% for team, recipients in ds_config_team_report_recipients.iteritems() %}
+   {{team}}:
+{% for recipient in recipients %}
+     - {{recipient}}
+{% endfor %}
+{% endfor %}
+
