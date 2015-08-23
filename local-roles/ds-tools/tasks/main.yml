@@ -38,11 +38,19 @@
     owner: "{{ ds_user }}"
   tags: [ds-tools]
 
-- name: add crontab
+- name: add crontab for dutysheets
   cron: name="send dutysheet"
         user={{ ds_user }}
         minute=0
         hour=16
         weekday=2
         job="(cd {{ ds_dir }} && ./send-dutysheets.py)"
+
+- name: add crontab for officer reports
+  cron: name="send officer reports"
+        user={{ ds_user }}
+        minute=0
+        hour=7
+        day=1
+        job="(cd {{ ds_dir }} && xvfb-run ./send-officer-reports.py)"
 
