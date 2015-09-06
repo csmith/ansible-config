@@ -16,3 +16,7 @@
 {% endfor %}
 {% endfor %}
 
+ duty_type_expectations:
+{% for team, type in ds_config_duty_type_expectations.iteritems() %}
+   {{team}}: {{type}}
+{% endfor %}
