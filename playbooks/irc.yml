@@ -3,5 +3,5 @@
   roles:
     - role: dfbnc
       dfbnc_listenhosts: 0.0.0.0:+33262\n0.0.0.0:33263
+      dfbnc_version: 0.3
     - tapchat
-
